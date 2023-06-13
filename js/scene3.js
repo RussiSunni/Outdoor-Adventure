@@ -1,10 +1,10 @@
-class Scene2 extends Phaser.Scene {
+class Scene3 extends Phaser.Scene {
     constructor() {
-        super('Scene2');
+        super('Scene3');
     }
     preload() {
         //load our images or sounds 
-        this.load.image("cabinBG", "assets/cabin.png");
+        this.load.image("cabinInteriorBG", "assets/cabinInterior.png");
         this.load.image("moveLeft", "assets/UI/moveLeftButton.png");
         this.load.image("moveRight", "assets/UI/moveRightButton.png");
         this.load.image("moveForward", "assets/UI/moveForwardButton.png");
@@ -12,7 +12,7 @@ class Scene2 extends Phaser.Scene {
     create() {
 
         // Background.        
-        const bg = this.add.image(0, 0, 'cabinBG')
+        const bg = this.add.image(0, 0, 'cabinInteriorBG')
             .setOrigin(0)
 
         bg.displayWidth = this.sys.canvas.width;
@@ -43,6 +43,6 @@ class Scene2 extends Phaser.Scene {
     }
 
     onForwardButtonDown() {
-        this.scene.start("Scene3");
+        //this.scene.start("Scene2");
     }
 }

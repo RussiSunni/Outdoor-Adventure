@@ -11,14 +11,12 @@ class Scene1 extends Phaser.Scene {
     }
     create() {
 
-        // Responsive background.
-        const cameraWidth = this.cameras.main.width
-        const cameraHeight = this.cameras.main.height
+        // Background.        
         const bg = this.add.image(0, 0, 'riverBG')
             .setOrigin(0)
 
-        bg.setScale(Math.max(cameraWidth / bg.width, cameraHeight / bg.height))
-        //     bg.x = 0 - ((bg.displayWidth - cameraWidth) / 2)
+        bg.displayWidth = this.sys.canvas.width;
+        bg.displayHeight = this.sys.canvas.height;
 
         // Left button.
         this.leftBtn = this.add.image(60, game.config.height - 60, "moveLeft");
