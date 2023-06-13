@@ -8,6 +8,7 @@ class Scene3 extends Phaser.Scene {
         this.load.image("moveLeft", "assets/UI/moveLeftButton.png");
         this.load.image("moveRight", "assets/UI/moveRightButton.png");
         this.load.image("moveForward", "assets/UI/moveForwardButton.png");
+        this.load.image("wineBottles", "assets/Images/wineBottles.png");
     }
     create() {
 
@@ -32,6 +33,16 @@ class Scene3 extends Phaser.Scene {
         this.fwdBtn = this.add.image(game.config.width / 2, game.config.height - 60, "moveForward");
         this.fwdBtn.setInteractive();
         this.fwdBtn.on("pointerdown", this.onForwardButtonDown, this);
+
+
+        // Wine bottles.
+        this.wineBottles = this.add.image(200, 700, "wineBottles");
+        this.wineBottles.setInteractive();
+        this.wineBottles.on("pointerdown", this.onChooseWineBottles, this);
+    }
+
+    onChooseWineBottles() {
+        alert("Drink wine?")
     }
 
     onLeftButtonDown() {
