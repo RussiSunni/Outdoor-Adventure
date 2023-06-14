@@ -11,6 +11,7 @@ class Scene1 extends Phaser.Scene {
         this.load.image("hallway", "assets/Backgrounds/Town/hallway.png");
         this.load.image("photo", "assets/Backgrounds/Town/photo-closeup.png");
         this.load.image("kitchen", "assets/Backgrounds/Town/kitchen.png");
+        this.load.image("cash", "assets/Backgrounds/Town/cash.png");
     }
 
     create() {
@@ -39,6 +40,7 @@ class Scene1 extends Phaser.Scene {
                         .setOrigin(0)
                     this.bgDisplay();
 
+                    this.textNum = 4;
                     this.textBg = this.add.rectangle(0, 700, 540, 260, '#000000', 0.5).setOrigin(0);
                     this.narrative = this.add.text(20, 720, 'Another boring day. Nothing ever happens here.', { fontFamily: 'Arial', fill: '#ffffff', fontSize: 24, wordWrap: { width: 500, useAdvancedWrap: true } })
 
@@ -48,19 +50,56 @@ class Scene1 extends Phaser.Scene {
                     this.bg = this.add.image(0, 0, 'hallway')
                         .setOrigin(0)
                     this.bgDisplay();
-                    this.bgNum = 4;
+
+                    this.textBg = this.add.rectangle(0, 700, 540, 260, '#000000', 0.5).setOrigin(0);
+                    if (this.textNum == 4) {
+                        this.narrative = this.add.text(20, 720, "I wonder if Grandma's home.", { fontFamily: 'Arial', fill: '#ffffff', fontSize: 24, wordWrap: { width: 500, useAdvancedWrap: true } })
+                        this.textNum = 5;
+                    }
+                    else if (this.textNum == 5) {
+                        this.narrative = this.add.text(20, 720, "Hmm, seems like the place is empty.", { fontFamily: 'Arial', fill: '#ffffff', fontSize: 24, wordWrap: { width: 500, useAdvancedWrap: true } })
+                        this.textNum = 6;
+                        this.bgNum = 4;
+                    }
                 }
                 else if (this.bgNum == 4) {
                     this.bg = this.add.image(0, 0, 'photo')
                         .setOrigin(0)
                     this.bgDisplay();
-                    this.bgNum = 5;
+
+                    this.textBg = this.add.rectangle(0, 700, 540, 260, '#000000', 0.5).setOrigin(0);
+                    if (this.textNum == 6) {
+                        this.narrative = this.add.text(20, 720, "I wish I could go to wild places, like Grandpa used to.", { fontFamily: 'Arial', fill: '#ffffff', fontSize: 24, wordWrap: { width: 500, useAdvancedWrap: true } })
+                        this.textNum = 7;
+                    }
+                    else if (this.textNum == 7) {
+                        this.narrative = this.add.text(20, 720, "No school, homework. No one telling me what to do.", { fontFamily: 'Arial', fill: '#ffffff', fontSize: 24, wordWrap: { width: 500, useAdvancedWrap: true } })
+                        this.textNum = 8;
+                    }
+                    else if (this.textNum == 8) {
+                        this.narrative = this.add.text(20, 720, "What an exciting life. Nothing ever happens in my life...", { fontFamily: 'Arial', fill: '#ffffff', fontSize: 24, wordWrap: { width: 500, useAdvancedWrap: true } })
+                        this.textNum = 8;
+                        this.bgNum = 5;
+                    }
                 }
                 else if (this.bgNum == 5) {
                     this.bg = this.add.image(0, 0, 'kitchen')
                         .setOrigin(0)
                     this.bgDisplay();
                     this.bgNum = 6;
+
+                    this.textBg = this.add.rectangle(0, 700, 540, 260, '#000000', 0.5).setOrigin(0);
+                    this.narrative = this.add.text(20, 720, "I'm hungry. I'll have...", { fontFamily: 'Arial', fill: '#ffffff', fontSize: 24, wordWrap: { width: 500, useAdvancedWrap: true } })
+                }
+                else if (this.bgNum == 6) {
+                    this.bg = this.add.image(0, 0, 'kitchen')
+                        .setOrigin(0)
+                    this.bgDisplay();
+                    this.bgNum = 6;
+
+                    this.textBg = this.add.rectangle(0, 700, 540, 260, '#000000', 0.5).setOrigin(0);
+                    this.narrative = this.add.text(20, 720, "I'm hungry. I'll have...", { fontFamily: 'Arial', fill: '#ffffff', fontSize: 24, wordWrap: { width: 500, useAdvancedWrap: true } })
+                    this.scene.start("Scene2");
                 }
             }, this
         );
