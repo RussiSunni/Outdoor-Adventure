@@ -3,6 +3,8 @@ class Scene2 extends Phaser.Scene {
         super('Scene2');
         this.textNum = 0;
         this.bgNum = 0;
+        this.isFoodChosen = false;
+        this.clicks = 0;
     }
     preload() {
         //load our images or sounds 
@@ -17,6 +19,15 @@ class Scene2 extends Phaser.Scene {
             .setOrigin(0)
 
         this.bgDisplay();
+
+        this.input.on('pointerdown',
+            function () {
+                if (this.isFoodChosen) {
+                    this.clicks++;
+                    if (this.clicks == 2)
+                        this.scene.start("Scene3");
+                }
+            }, this);
 
         this.donuts = this.add.image(150, 565, 'donuts')
         this.donuts.setScale(0.5)
@@ -38,11 +49,13 @@ class Scene2 extends Phaser.Scene {
         this.textBg = this.add.rectangle(0, 700, 540, 260, '#000000', 0.5).setOrigin(0);
         this.narrative = this.add.text(20, 720, 'You choose the donuts.', { fontFamily: 'Arial', fill: '#ffffff', fontSize: 24, wordWrap: { width: 500, useAdvancedWrap: true } })
         this.donuts.setAlpha(0)
+        this.isFoodChosen = true
     }
 
     onSandwichButtonDown() {
         this.textBg = this.add.rectangle(0, 700, 540, 260, '#000000', 0.5).setOrigin(0);
         this.narrative = this.add.text(20, 720, 'You choose the sandwich.', { fontFamily: 'Arial', fill: '#ffffff', fontSize: 24, wordWrap: { width: 500, useAdvancedWrap: true } })
         this.sandwich.setAlpha(0)
+        this.isFoodChosen = true
     }
 }
