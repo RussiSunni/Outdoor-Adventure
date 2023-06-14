@@ -35,7 +35,6 @@ class Scene1 extends Phaser.Scene {
                     this.bgNum = 2;
                 }
                 else if (this.bgNum == 2) {
-
                     this.bg = this.add.image(0, 0, 'elevator')
                         .setOrigin(0)
                     this.bgDisplay();
