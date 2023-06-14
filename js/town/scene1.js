@@ -22,7 +22,7 @@ class Scene1 extends Phaser.Scene {
         this.bgDisplay();
 
         this.textBg = this.add.rectangle(0, 700, 540, 260, '#000000', 0.5).setOrigin(0);
-        this.narrative = this.add.text(50, 750, 'Our home.', { fontFamily: 'Arial', fill: '#ffffff', fontSize: 24 })
+        this.narrative = this.add.text(20, 720, 'Our home.', { fontFamily: 'Arial', fill: '#ffffff', fontSize: 24 })
 
         this.textNum = 2;
 
@@ -34,13 +34,13 @@ class Scene1 extends Phaser.Scene {
                     this.bgNum = 2;
                 }
                 else if (this.bgNum == 2) {
+
                     this.bg = this.add.image(0, 0, 'elevator')
                         .setOrigin(0)
                     this.bgDisplay();
 
                     this.textBg = this.add.rectangle(0, 700, 540, 260, '#000000', 0.5).setOrigin(0);
-
-                    this.narrative = this.add.text(50, 750, 'The big and bustling city.', { fontFamily: 'Arial', fill: '#ffffff', fontSize: 24 })
+                    this.narrative = this.add.text(20, 720, 'Another boring day. Nothing ever happens here.', { fontFamily: 'Arial', fill: '#ffffff', fontSize: 24, wordWrap: { width: 500, useAdvancedWrap: true } })
 
                     this.bgNum = 3;
                 }
