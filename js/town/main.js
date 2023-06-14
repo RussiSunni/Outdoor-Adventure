@@ -6,7 +6,7 @@ window.onload = function () {
         height: 960,
         parent: 'phaser-game',
 
-        scene: [Scene1, Scene2, Scene3]
+        scene: [Scene1, Scene2, Scene3, Scene4]
     };
     game = new Phaser.Game(config);
 }

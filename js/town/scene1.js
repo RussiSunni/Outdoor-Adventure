@@ -95,18 +95,16 @@ class Scene1 extends Phaser.Scene {
                     this.bg = this.add.image(0, 0, 'kitchen')
                         .setOrigin(0)
                     this.bgDisplay();
-                    this.bgNum = 6;
+                    this.bgNum = 7;
 
                     this.textBg = this.add.rectangle(0, 700, 540, 260, '#000000', 0.5).setOrigin(0);
                     this.narrative = this.add.text(20, 720, "I'm hungry. I'll have...", { fontFamily: 'Arial', fill: '#ffffff', fontSize: 24, wordWrap: { width: 500, useAdvancedWrap: true } })
+                }
+                else if (this.bgNum == 7) {
                     this.scene.start("Scene2");
                 }
             }, this
         );
-
-
-
-
     }
 
     bgDisplay() {
