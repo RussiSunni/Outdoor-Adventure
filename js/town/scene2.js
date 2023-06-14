@@ -37,10 +37,12 @@ class Scene2 extends Phaser.Scene {
     onDonutsButtonDown() {
         this.textBg = this.add.rectangle(0, 700, 540, 260, '#000000', 0.5).setOrigin(0);
         this.narrative = this.add.text(20, 720, 'You choose the donuts.', { fontFamily: 'Arial', fill: '#ffffff', fontSize: 24, wordWrap: { width: 500, useAdvancedWrap: true } })
+        this.donuts.setAlpha(0)
     }
 
     onSandwichButtonDown() {
         this.textBg = this.add.rectangle(0, 700, 540, 260, '#000000', 0.5).setOrigin(0);
         this.narrative = this.add.text(20, 720, 'You choose the sandwich.', { fontFamily: 'Arial', fill: '#ffffff', fontSize: 24, wordWrap: { width: 500, useAdvancedWrap: true } })
+        this.sandwich.setAlpha(0)
     }
 }
