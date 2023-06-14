@@ -8,7 +8,7 @@ class Scene2 extends Phaser.Scene {
         //load our images or sounds 
         this.load.image("fridge", "assets/Backgrounds/Town/fridge.png");
         this.load.image("donuts", "assets/Images/donuts.png");
-        this.load.image("sandwich", "assets/Images/sanwich.png");
+        this.load.image("sandwich", "assets/Images/sandwich.png");
     }
 
     create() {
@@ -18,9 +18,15 @@ class Scene2 extends Phaser.Scene {
 
         this.bgDisplay();
 
-
         this.donuts = this.add.image(150, 565, 'donuts')
         this.donuts.setScale(0.5)
+        this.donuts.setInteractive();
+        this.donuts.on("pointerdown", this.onDonutsButtonDown, this);
+
+        this.sandwich = this.add.image(115, 740, 'sandwich')
+        this.sandwich.setScale(0.4)
+        this.sandwich.setInteractive();
+        this.sandwich.on("pointerdown", this.onSandwichButtonDown, this);
     }
 
     bgDisplay() {
@@ -28,11 +34,11 @@ class Scene2 extends Phaser.Scene {
         this.bg.displayHeight = this.sys.canvas.height;
     }
 
-    onRightButtonDown() {
-        this.scene.start("Scene2");
+    onDonutsButtonDown() {
+        alert("donut")
     }
 
-    onForwardButtonDown() {
-        //this.scene.start("Scene2");
+    onSandwichButtonDown() {
+        alert("sandwich")
     }
 }
