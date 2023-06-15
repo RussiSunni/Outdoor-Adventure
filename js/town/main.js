@@ -7,7 +7,7 @@ window.onload = function () {
         parent: 'phaser-game',
 
         scale: {
-            mode: Phaser.Scale.FIT,
+            mode: Phaser.Scale.WIDTH_CONTROLS_HEIGHT,
         },
 
 
