@@ -2,9 +2,16 @@ var game;
 window.onload = function () {
     var config = {
         type: Phaser.AUTO,
-        width: 540,
-        height: 960,
-        parent: 'phaser-game',
+        width: 600,
+        height: 900,
+
+        scale: {
+            mode: Phaser.Scale.FIT,
+            max: {
+                width: 600,
+                height: 900
+            },
+        },
 
         scene: [Scene1, Scene2, Scene3]
     };
