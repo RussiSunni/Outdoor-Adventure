@@ -3,48 +3,35 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width = device-width, initial-scale =
+    1.0, maximum-scale = 1.0, minimum-scale = 1.0, user-scalable = 0,
+    minimal-ui=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Healthy Lifestyles</title>
     <style>
-        html,
-        body {
-            height: 100%;
-            overflow: hidden;
-        }
-
-        canvas {
-            height: 100%;
-        }
-
-        body {
+        html {
             background-color: black;
         }
 
-        #phaser-game {
-            width: 100%;
-            height: 100%;
+        body {
+            padding: 0px;
+            margin: 0px;
         }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/3.60.0/phaser.js"
         integrity="sha512-H05oT7BAjM9Ai1IaFX9zr61NtE2e1P0MkTz3AZXBnseaJSAOt2FGMFJ+vVGutaJxEGA1jxUiYsTBYQNE08/Erw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="js/town/main.js"></script>
-    <script src="js/town/scene1.js"></script>
-    <script src="js/town/scene2.js"></script>
-    <script src="js/town/scene3.js"></script>
-    <script src="js/town/scene4.js"></script>
+    <script type="module" src="js/town/main.js"></script>
+    <script type="module" src="js/town/scene1.js"></script>
+    <script type="module" src="js/town/scene2.js"></script>
+    <script type="module" src="js/town/scene3.js"></script>
+    <script type="module" src="js/town/scene4.js"></script>
 
 </head>
 
 <body>
-    <div id='phaser-game'></div>
 
-    <!-- <script>
-        var canvas = document.getElementById('phaser-game');
-        var heightRatio = 0.5;
-        canvas.width = 200;       
-    </script> -->
+
 </body>
 
 </html>

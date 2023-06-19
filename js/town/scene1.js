@@ -1,11 +1,8 @@
-import { app } from '../lib/appScale.js'
-
 export default class Scene1 extends Phaser.Scene {
     constructor() {
         super('Scene1');
         this.textNum = 0;
         this.bgNum = 0;
-        this.imageList = []
     }
     preload() {
         //load our images or sounds 
@@ -19,34 +16,12 @@ export default class Scene1 extends Phaser.Scene {
 
     create() {
         // BG 1 --------------------------------------------
-        let bg = this.add.sprite(window.innerWidth / 2, window.innerHeight / 2, 'apartment')
-        bg.orgWidth = bg.displayWidth
-        bg.orgHeight = bg.displayHeight
-        bg.update = function () {
-            if (app.width * this.orgHeight / this.orgWidth < app.height) {
-                this.displayWidth = app.height * this.orgWidth / this.orgHeight
-                this.displayHeight = app.height
-            } else {
-                this.displayWidth = app.width
-                this.displayHeight = app.width * this.orgHeight / this.orgWidth
-            }
-        }
-
-        let textBg = this.add.rectangle(window.innerWidth / 2, app.centerY + 1050, app.width, app.width / 2, '#000000', 0.5).setOrigin(0.5);
-        textBg.orgWidth = textBg.displayWidth
-        textBg.orgHeight = textBg.displayHeight
-        textBg.update = function () {
-            this.displayWidth = app.width;
-            this.displayHeight = app.height / 2
-        }
-
-        this.narrative = this.add.text(app.centerX, app.centerY + 600, 'Our home.', { fontFamily: 'Arial', fill: '#ffffff', fontSize: 80, wordWrap: { width: app.width - 15, useAdvancedWrap: true } }).setOrigin(0.5, 0);
-
-        // -------------------------------------------------------------
-        this.imageList.push(bg, textBg, this.narrative)
-        this.scale.on('resize', this.resize, this)
-        this.cameraUpdate()
-        this.resize()
+        this.background = this.add.image(0, 0, "apartment")
+            .setOrigin(.0, 0);
+        this.background.displayWidth = this.sys.canvas.width;
+        this.background.displayHeight = this.sys.canvas.height;
+        this.textBg = this.add.rectangle(0, this.sys.canvas.height - this.sys.canvas.height / 4, this.sys.canvas.width, this.sys.canvas.height / 4, '#000000', 0.5).setOrigin(0);
+        this.narrative = this.add.text(0, this.sys.canvas.height - this.sys.canvas.height / 4, 'Our home.', { fontFamily: 'Arial', fill: '#ffffff', fontSize: 40, wordWrap: { width: this.sys.canvas.width - 15, useAdvancedWrap: true } }).setOrigin(0, 0);
 
         this.textNum = 2;
 
@@ -59,13 +34,13 @@ export default class Scene1 extends Phaser.Scene {
                 }
                 else if (this.bgNum == 2) {
                     // BG 2 --------------------------------------------
-                    bg.setTexture('elevator');
+                    this.background.setTexture('elevator');
                     this.narrative.setText('Another boring day. Nothing ever happens here.')
                     this.textNum = 4;
                     this.bgNum = 3;
                 }
                 else if (this.bgNum == 3) {
-                    bg.setTexture('hallway');
+                    this.background.setTexture('hallway');
                     if (this.textNum == 4) {
                         this.narrative.setText("I wonder if Grandma's home.")
                         this.textNum = 5;
@@ -77,7 +52,7 @@ export default class Scene1 extends Phaser.Scene {
                     }
                 }
                 else if (this.bgNum == 4) {
-                    bg.setTexture('photo');
+                    this.background.setTexture('photo');
                     if (this.textNum == 6) {
                         this.narrative.setText("I wish I could go to wild places, like Grandpa used to.")
                         this.textNum = 7;
@@ -93,7 +68,7 @@ export default class Scene1 extends Phaser.Scene {
                     }
                 }
                 else if (this.bgNum == 5) {
-                    bg.setTexture('kitchen');
+                    this.background.setTexture('kitchen');
                     this.bgNum = 6;
                     this.narrative.setText("I'm hungry. I'll have...")
                 }
@@ -102,22 +77,5 @@ export default class Scene1 extends Phaser.Scene {
                 }
             }, this
         );
-    }
-
-
-
-    cameraUpdate() {
-        app.update()
-        const camera = this.cameras.main
-        camera.setZoom(app.zoom)
-        camera.centerOn(app.centerX, app.centerY)
-    }
-
-    resize() {
-        this.cameraUpdate()
-        // all sprite update
-        for (let index = 0; index < this.imageList.length; index++) {
-            this.imageList[index].update()
-        }
     }
 }

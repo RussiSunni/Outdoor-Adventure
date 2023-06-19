@@ -19,6 +19,6 @@ let config = {
     },
 
 
-    scene: [Scene2, Scene1, Scene3, Scene4]
+    scene: [Scene1, Scene2, Scene3, Scene4]
 };
 export default new Phaser.Game(config)
