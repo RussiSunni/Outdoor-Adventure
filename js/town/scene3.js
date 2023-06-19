@@ -1,4 +1,4 @@
-class Scene3 extends Phaser.Scene {
+export default class Scene3 extends Phaser.Scene {
     constructor() {
         super('Scene3');
         this.textNum = 0;
@@ -7,19 +7,17 @@ class Scene3 extends Phaser.Scene {
     preload() {
         //load our images or sounds 
         this.load.image("cash", "assets/Backgrounds/Town/cash.png");
-
     }
 
     create() {
+        // BG 1 --------------------------------------------
+        this.background = this.add.image(0, 0, "cash")
+            .setOrigin(.0, 0);
+        this.background.displayWidth = this.sys.canvas.width;
+        this.background.displayHeight = this.sys.canvas.height;
 
-        // Background.        
-        this.bg = this.add.image(0, 0, 'cash')
-            .setOrigin(0)
-
-        this.bgDisplay();
-
-        this.textBg = this.add.rectangle(0, 700, 540, 260, '#000000', 0.5).setOrigin(0);
-        this.narrative = this.add.text(20, 720, 'Oh look, Grandma left me some money to get myself gear for the upcoming hike with Grandpa.', { fontFamily: 'Arial', fill: '#ffffff', fontSize: 24 })
+        this.textBg = this.add.rectangle(0, this.sys.canvas.height - this.sys.canvas.height / 4, this.sys.canvas.width, this.sys.canvas.height / 4, '#000000', 0.5).setOrigin(0);
+        this.narrative = this.add.text(0, this.sys.canvas.height - this.sys.canvas.height / 4, 'Oh look, Grandma left me some money to get myself gear for the upcoming hike with Grandpa.', { fontFamily: 'Arial', fill: '#ffffff', fontSize: 40, wordWrap: { width: this.sys.canvas.width - 15, useAdvancedWrap: true } }).setOrigin(0, 0);
 
         this.textNum = 2;
 
@@ -42,10 +40,5 @@ class Scene3 extends Phaser.Scene {
                 }
             }, this
         );
-    }
-
-    bgDisplay() {
-        this.bg.displayWidth = this.sys.canvas.width;
-        this.bg.displayHeight = this.sys.canvas.height;
     }
 }
