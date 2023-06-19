@@ -11,7 +11,10 @@ export default class Scene1 extends Phaser.Scene {
         //load our images or sounds 
         this.load.image("apartment", "assets/Backgrounds/Town/apartment-2.png");
         this.load.image("elevator", "assets/Backgrounds/Town/elevator.png");
-
+        this.load.image("hallway", "assets/Backgrounds/Town/hallway.png");
+        this.load.image("photo", "assets/Backgrounds/Town/photo-closeup.png");
+        this.load.image("kitchen", "assets/Backgrounds/Town/kitchen.png");
+        this.load.image("cash", "assets/Backgrounds/Town/cash.png");
     }
 
     create() {
@@ -29,32 +32,19 @@ export default class Scene1 extends Phaser.Scene {
             }
         }
 
-        let textBg = this.add.rectangle(window.innerWidth / 2, window.innerHeight * 2, 540, 260, '#000000', 0.5);
+        let textBg = this.add.rectangle(window.innerWidth / 2, app.centerY + 1050, app.width, app.width / 2, '#000000', 0.5).setOrigin(0.5);
         textBg.orgWidth = textBg.displayWidth
         textBg.orgHeight = textBg.displayHeight
         textBg.update = function () {
-            if (app.width * this.orgHeight / this.orgWidth < app.height) {
-                this.displayWidth = app.height * this.orgWidth / this.orgHeight
-                this.displayHeight = app.height / 2
-            } else {
-                this.displayWidth = app.width
-                this.displayHeight = app.width * this.orgHeight / this.orgWidth
-            }
+            this.displayWidth = app.width;
+            this.displayHeight = app.height / 2
         }
 
-        this.narrative = this.add.text(app.centerX, app.centerY + 600, 'Our home.', { fontFamily: 'Arial', fill: '#ffffff', fontSize: 80, wordWrap: { width: app.width - 15, useAdvancedWrap: true } }).setOrigin(0.5);
+        this.narrative = this.add.text(app.centerX, app.centerY + 600, 'Our home.', { fontFamily: 'Arial', fill: '#ffffff', fontSize: 80, wordWrap: { width: app.width - 15, useAdvancedWrap: true } }).setOrigin(0.5, 0);
 
         // -------------------------------------------------------------
         this.imageList.push(bg, textBg, this.narrative)
-
-        // all sprite update
-        for (let index = 0; index < this.imageList.length; index++) {
-            this.imageList[index].update()
-        }
-        // -------------------------------------------------------------
-
         this.scale.on('resize', this.resize, this)
-
         this.cameraUpdate()
         this.resize()
 
@@ -74,9 +64,47 @@ export default class Scene1 extends Phaser.Scene {
                     this.textNum = 4;
                     this.bgNum = 3;
                 }
+                else if (this.bgNum == 3) {
+                    bg.setTexture('hallway');
+                    if (this.textNum == 4) {
+                        this.narrative.setText("I wonder if Grandma's home.")
+                        this.textNum = 5;
+                    }
+                    else if (this.textNum == 5) {
+                        this.narrative.setText("Hmm, seems like the place is empty.")
+                        this.textNum = 6;
+                        this.bgNum = 4;
+                    }
+                }
+                else if (this.bgNum == 4) {
+                    bg.setTexture('photo');
+                    if (this.textNum == 6) {
+                        this.narrative.setText("I wish I could go to wild places, like Grandpa used to.")
+                        this.textNum = 7;
+                    }
+                    else if (this.textNum == 7) {
+                        this.narrative.setText("No school, homework. No one telling me what to do.")
+                        this.textNum = 8;
+                    }
+                    else if (this.textNum == 8) {
+                        this.narrative.setText("What an exciting life. Nothing ever happens in my life...")
+                        this.textNum = 8;
+                        this.bgNum = 5;
+                    }
+                }
+                else if (this.bgNum == 5) {
+                    bg.setTexture('kitchen');
+                    this.bgNum = 6;
+                    this.narrative.setText("I'm hungry. I'll have...")
+                }
+                else if (this.bgNum == 6) {
+                    this.scene.start("Scene2");
+                }
             }, this
         );
     }
+
+
 
     cameraUpdate() {
         app.update()
@@ -92,5 +120,4 @@ export default class Scene1 extends Phaser.Scene {
             this.imageList[index].update()
         }
     }
-
 }
