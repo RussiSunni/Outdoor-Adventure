@@ -56,7 +56,7 @@ export default class Scene5 extends Phaser.Scene {
                             this.textNum = 5;
                             this.speechOption1Container.alpha = 0
                             this.charNameText.setText('Zack')
-                            this.charDialogue.setText("I guess you could just risk it and use your old gear. Just hope it doesn't rain or get cold.")
+                            this.charDialogue.setText("I guess you could just risk it and not get a jacket. Just hope it doesn't rain or get cold.")
                         }, this);
                     }
                     else if (this.textNum == 5) {
