@@ -69,8 +69,8 @@ export default class Scene5 extends Phaser.Scene {
                     this.charDialogue.setText("")
                     this.textBg.alpha = 0
 
-                    this.moneyBg = this.add.rectangle(0, 0, this.sys.canvas.width / 4, this.sys.canvas.height / 4, '#00FF00', 1).setOrigin(0);
-
+                    this.moneyBg = this.add.rectangle(this.sys.canvas.width - (this.sys.canvas.width / 6), 0, this.sys.canvas.width / 6, this.sys.canvas.height / 16, 0X00FF00, 1).setOrigin(0);
+                    this.moneyAmount = this.add.text(this.sys.canvas.width - (this.sys.canvas.width / 6), 0, '$200', { fontFamily: 'Arial', fill: '#000000', fontSize: 40, wordWrap: { width: this.sys.canvas.width - 15, useAdvancedWrap: true } }).setOrigin(0, 0);
                 }
 
             }, this)
